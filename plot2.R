@@ -6,9 +6,11 @@ dataFeb <- dataAll[min(which(dataAll$Date == "1/2/2007")):max(which(dataAll$Date
 dataFeb2 = cbind(paste(dataFeb$Date, dataFeb$Time, sep=" "),dataFeb)
 names(dataFeb2)[1]<-c("Date.Time")
 dataFeb2$Date.Time <- as.POSIXct(dataFeb2$Date.Time, format = '%d/%m/%Y %H:%M:%S')
+
+png("plot2.png", height = 480, width = 480)
+
 par(mfcol=c(1,1),mar=c(4,4,1,1))
 
 plot(dataFeb2$Date.Time,dataFeb2$Global_active_power,type="l",ylab="Global Active Power(kilowatts)",xlab="")
 
-dev.copy(png,file="plot2.png")
 dev.off()
